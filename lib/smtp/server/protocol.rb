@@ -229,9 +229,9 @@ module SMTP
       end
 
       # process authentication parameters
-      # calls receive_plain_auth with user and password
+      # calls authenticate callback with user and password
       def process_plain_auth(user, password)
-        if receive_plain_auth(user, password)
+        if authenticate(user, password)
           reply 235, "authentication ok"
           @state << :auth
         else
