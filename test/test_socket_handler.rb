@@ -1,8 +1,9 @@
-require 'test/unit'
+require 'minitest/autorun'
 require 'smtp-server'
 require 'net/smtp'
+require 'byebug'
 
-class TestSocketHandler < Test::Unit::TestCase
+class TestSocketHandler < Minitest::Test
  
   HOST = '127.0.0.1'
   PORT = 10025
@@ -48,13 +49,10 @@ class TestSocketHandler < Test::Unit::TestCase
   end
   
   def test_net_smtp_client
-    assert_nothing_raised do
       smtp = Net::SMTP.new(HOST, PORT)
       smtp.set_debug_output $stderr
       smtp.start(Socket.gethostname) do
         smtp.send_mail("From: <maarten>\r\n\r\nHallo", 'foo@example.com', 'bar@example.com')
       end
-    end
   end
- 
 end

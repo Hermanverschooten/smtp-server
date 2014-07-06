@@ -1,3 +1,4 @@
+require 'socket'
 module SMTP
   module Server
     #
@@ -15,7 +16,7 @@ module SMTP
       # The domain name returned in the response of the HELO, EHLO, and QUIT command.
       # Default set to Socket#gethostname.
       def get_server_domain
-        @hostname ||= Socket.gethostname
+        @hostname ||= ::Socket.gethostname
       end
 
       # Called when the HELO or EHLO command is received with the remote domain

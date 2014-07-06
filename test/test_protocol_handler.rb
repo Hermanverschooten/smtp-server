@@ -1,7 +1,7 @@
-require 'test/unit'
+require 'minitest/autorun'
 require 'smtp-server'
 
-class TestProtocolHandler < Test::Unit::TestCase
+class TestProtocolHandler < Minitest::Test
 
   class ProtocolHandler
     attr_reader :response
